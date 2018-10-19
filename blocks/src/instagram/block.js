@@ -154,8 +154,6 @@ registerBlockType('vl-blocks/instagram', {
 			access_token
 		}
 
-		console.log('access_token', access_token);
-
 
 
 		if (access_token) {

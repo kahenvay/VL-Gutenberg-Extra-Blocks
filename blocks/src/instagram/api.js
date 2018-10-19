@@ -9,7 +9,7 @@ export const getFeed = (args) => {
 
 	var call = base_url + access_token;
 
-	console.log('call', call);
+	// console.log('call', call);
 	return axios.get(call);
 }
 
@@ -24,6 +24,6 @@ export const getEmbed = (args) => {
 
 	var call = base_url + link;
 
-	console.log('call', call);
+	// console.log('call', call);
 	return axios.get(call);
 }

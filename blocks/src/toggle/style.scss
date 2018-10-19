@@ -9,8 +9,8 @@
 
 		.vl-accordion__content .vl-accordion__content-toggle i {
 			&:before, &:after {
-				transition: all 0.4s ease-in-out;
-				transition-delay: 0.4s; 
+				transition: all 0.2s ease-in-out;
+				transition-delay: 0.2s; 
 			}
 		}
 
@@ -155,10 +155,24 @@
 				position:relative;
 				padding: 20px;
     		box-sizing: content-box;
-				> * {
+				div,p,u, h1,h2,h3,h4,h5,h6 {
 					transform: translateY(0);
-					transition: transform 0.4s ease-in-out;
+					transition: transform 0.2s ease-in-out;
 					color: #fff;
+					z-index:1;
+				}
+				.vl-accordion__title__image__wrapper{
+					position:absolute;
+					left:0;
+					right:0;
+					top:0;
+					bottom:0;
+					z-index:0;
+					img{
+						width: 100%;
+				    height: 100%;
+				    object-fit: cover;
+					}
 				}
 			}
 			.vl-accordion__content-toggle__content{
@@ -168,10 +182,11 @@
 				transition: all 0.2s ease-in-out;
     		box-sizing: content-box;
 
-				> * {
+				div,p,u, h1,h2,h3,h4,h5,h6 {
 					transform: translateY(0);
 					transition: transform 0.2s ease-in-out;
 					color: #fff;
+					z-index:1;
 				}
 
 			}

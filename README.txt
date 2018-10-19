@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
+Contributors: ucoates
 Donate link: https://visual-legion.com
 Tags: comments, spam
 Requires at least: 3.0.1
@@ -39,8 +39,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
-= 0.1 =
-* Can add photos to albums and visit single pages
+= 0.2 =
+
+* Can add images to accordions
+
 *	Todos : - Add to Settings page
 						- Twitter user tokens
 					- Improve Instagram user tokens flow?
@@ -48,3 +50,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 					- Improve twitter and instragram blocks to use token apis
 					- Add more customisation to blocks
 					- Replace with proper instagram icon
+					- Video option for accordion
+					- Allow multiple toggles per accordion
+					- Refactor jQuery to pure react => 
+						on edit : didmount+didupdate and save heights as attribute
+						on save : user attribute heights
+
+= 0.1 =

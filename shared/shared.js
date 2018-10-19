@@ -29,15 +29,15 @@
  * practising this, we should strive to set a better example in our own work.
  */
 
-$(function() {
+$(() => {
 
 	$(window).load(function() {
-		console.log('toggle loaded');
+		// console.log('toggle loaded');
 		$('.vl-accordion-theme-neptune input[type="checkbox"]').click(function(e) {
 			// e.preventDefault();
 
 			function accordionUpDown(ele, transformHeight, condition, eleHeight) {
-				console.log('lol');
+				// console.log('lol');
 				if (condition) {
 					ele.css('transform', 'translateY(' + transformHeight + 'px)');
 					if (eleHeight) {
@@ -54,16 +54,16 @@ $(function() {
 
 			// get checked status
 			const checked = el.prop('checked');
-			console.log('checked', checked);
+			// console.log('checked', checked);
 
 			// Get title wrapper, title, content wrapper, content elements
 			const toggleTitle = el.parent().find('.vl-accordion__content-toggle__title');
-			const toggleTitleChild = el.parent().find('.vl-accordion__content-toggle__title').children();
-			const toggleContentChild = el.parent().find('.vl-accordion__content-toggle__content').children();
+			const toggleTitleChild = el.parent().find('.vl-accordion__content-toggle__title').children('p,ul,h1,h2,h3,h4,h5,h6');
+			const toggleContentChild = el.parent().find('.vl-accordion__content-toggle__content').children('p,ul,h1,h2,h3,h4,h5,h6');
 			const toggleContent = el.parent().find('.vl-accordion__content-toggle__content');
 
-			console.log('toggleTitle', toggleTitle);
-			console.log('toggleContent', toggleContent);
+			// console.log('toggleTitle', toggleTitle);
+			// console.log('toggleContent', toggleContent);
 
 			// get wrapper heights
 			const accordionTitleHeigth = parseInt(toggleTitle.css('height'));
@@ -75,14 +75,8 @@ $(function() {
 			accordionUpDown(toggleTitleChild, accordionTitleHeigth, checked);
 			accordionUpDown(toggleContentChild, accordionTitleHeigth, checked, accordionTitleHeigth * 2 + accordionContentHeigth);
 
-			console.log('accordionTitleHeigth', accordionTitleHeigth);
-			console.log('accordionContentHeigth', accordionContentHeigth);
-
-
-
-			// simulate default checkbox behaviour
-			// console.log("el.prop('checked')", el.prop('checked'));
-			// el.prop('checked', !el.prop('checked'));
+			// console.log('accordionTitleHeigth', accordionTitleHeigth);
+			// console.log('accordionContentHeigth', accordionContentHeigth);
 
 		})
 	});
