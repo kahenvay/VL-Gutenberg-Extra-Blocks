@@ -19,13 +19,13 @@ export class ToggleTitle extends Component {
 
 		this.setStatus = this.setStatus.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.titleMedia = this.titleMedia.bind(this);
 
 	}
 
-	//Richtext gives straight value array apparently, no event
+	//Richtext gives straight value array, no event
 	handleInputChange(value) {
 		console.log('value', value);
-		// let name = event.target.name
 		this.setState({
 			toggleTitle: value,
 			touched: true
@@ -42,14 +42,11 @@ export class ToggleTitle extends Component {
 
 		var props = newProps ? newProps : this.props;
 
-		// console.log('setStatus props', props);
 
 		if (props.toggleTitle) {
 			this.setState({
 				toggleTitle: props.toggleTitle
 			}, () => {
-				// console.log('this.state after set toggleTitle', this.state);
-				// this.handleInputChange(props.toggleTitle);
 			});
 		}
 		if (props.toggleTitleHeight) {
@@ -62,23 +59,35 @@ export class ToggleTitle extends Component {
 	}
 
 	componentDidMount() {
-		// console.log('mount props');
 		this.setStatus();
-
-	// setTimeout(function() {
-	// 	console.log('timeout');
-	// 	this.setState({
-	// 		toggleTitle: 'TIMOEUT MADAFAQA'
-	// 	}, () => {
-	// 		console.log('this.state after set toggleTitle', this.state);
-	// 	});
-	// }, 2000);
 	}
 
 
 	componentWillReceiveProps(newProps) {
-		// console.log('received props');
 		this.setStatus(newProps);
+	}
+
+	titleMedia(src, alt) {
+
+		console.log('titleMedia src', src);
+		console.log('titleMedia alt', alt);
+
+		if (!src) return null;
+
+		if (alt) {
+			return (
+				<div className={ 'vl-accordion__title__image__wrapper' }>
+      <img className="vl-accordion__title__image" src={ src } alt={ alt } />
+    </div>
+				);
+		}
+
+		// No alt set, so let's hide it from screen readers
+		return (
+			<div className={ 'vl-accordion__title__image__wrapper' }>
+     <img className="vl-accordion__title__image" src={ src } alt="" aria-hidden="true" />
+   </div>
+			);
 	}
 
 	// componentDidUpdate() {
@@ -88,19 +97,16 @@ export class ToggleTitle extends Component {
 
 	render() {
 
-		console.log('render state', this.state);
-		// console.log('props', this.props);
-
+		console.log('props', this.props);
 
 		return (
-			<div className="ToggleTitle">
-     <RichText keepPlaceholderOnFocus="true" tagName="h2" label="ToggleTitle title" help="Enter some text" /*value={ this.state.toggleTitle }*/ value={ this.props.toggleTitle }
-       name="title" placeholder="Content title" /*onChange={ this.handleInputChange }*/ onChange={ (content) => this.props.setAttributes({
-                                                                                                   	toggleTitle: content
-                                                                                                   }) } />
+			<div className="vl-accordion__content-toggle__title">
+     { this.titleMedia(this.props.toggleTitleMediaUrl, this.props.toggleTitleMediaAlt) }
+     <RichText keepPlaceholderOnFocus="true" tagName="h2" className={ "vl-accordion__content-toggle__title__text" } label="ToggleTitle title" help="Enter some text" /*value={ this.state.toggleTitle
+       }*/ value={ this.props.toggleTitle } name="title" placeholder="Content title" /*onChange={ this.handleInputChange }*/ onChange={ (content) => this.props.setAttributes({
+                                                                                                                                        	toggleTitle: content
+                                                                                                                                        }) } />
    </div>
 			);
 	}
 }
-
-// <h1>{ this.state.toggleTitle }</h1>

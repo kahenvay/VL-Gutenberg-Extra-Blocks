@@ -13,42 +13,21 @@ export class Toggle extends Component {
 			toggleTitle: '',
 			toggleContent: '',
 			toggleTitleHeight: '',
-			toggleContentHeight: '',
-			toggleTitleMediaUrl: '',
-			toggleTitleMediaAlt: ''
+			toggleContentHeight: ''
 		}
 
 		this.setStatus = this.setStatus.bind(this);
-		this.titleMedia = this.titleMedia.bind(this);
+
+		this.registerChangeHeight = this.registerChangeHeight.bind(this);
 
 	}
 
-	titleMedia(src, alt) {
-		if (!src) return null;
 
-		if (alt) {
-			return (
-				<div className={ 'vl-accordion__title__image__wrapper' }>
-      <img className="vl-accordion__title__image" src={ src } alt={ alt } />
-    </div>
-				);
-		}
-
-		// No alt set, so let's hide it from screen readers
-		return (
-			<div className={ 'vl-accordion__title__image__wrapper' }>
-     <img className="vl-accordion__title__image" src={ src } alt="" aria-hidden="true" />
-   </div>
-			);
-	}
-	;
 
 
 	setStatus(newProps) {
 
 		var props = newProps ? newProps : this.props;
-
-		// console.log('setStatus props', props);
 
 		if (props.toggleTitle) {
 			this.setState({
@@ -74,56 +53,42 @@ export class Toggle extends Component {
 			}, () => {
 			});
 		}
-		if (props.toggleTitleMediaUrl) {
-			this.setState({
-				toggleTitleMediaUrl: props.toggleTitleMediaUrl
-			}, () => {
-			});
-		}
-		if (props.toggleTitleMediaAlt) {
-			this.setState({
-				toggleTitleMediaAlt: props.toggleTitleMediaAlt
-			}, () => {
-			});
-		}
 
 	}
 
 	componentDidMount() {
-		// console.log('mount props');
 		this.setStatus();
-	// this.props.history.goBack();
 	}
 
 
 	componentWillReceiveProps(newProps) {
-		// console.log('received props');
 		this.setStatus(newProps);
+	}
+
+	registerChangeHeight(attr, height) {
+		this.setState({
+			[attr]: height
+		}, () => {
+			this.props.updateAttributes({
+				[attr]: height
+			});
+		});
 	}
 
 	componentDidUpdate() {}
 
 
 	render() {
-		console.log('props', this.props);
+		// console.log('props', this.props);
 		return (
-			<div className="Toggle">
+			<li className="vl-accordion__content-toggle">
      <input type="checkbox" />
      <i></i>
-     <div className={ 'vl-accordion__content-toggle__title' }>
-       { this.titleMedia(this.toggleTitleMediaUrl, this.toggleTitleMediaAlt) }
-       <ToggleTitle /*toggleTitle={ this.state.toggleTitle }*/ toggleTitle={ this.props.toggleTitle } toggleTitleHeight={ this.state.toggleTitleHeight } updateAttributes={ this.props.updateAttributes }
-         setAttributes={ this.props.setAttributes } />
-     </div>
-     <div className={ 'vl-accordion__content-toggle__content' }>
-       <ToggleContent /*toggleTitle={ this.state.toggleTitle }*/ toggleContent={ this.props.toggleContent } toggleContentHeight={ this.state.toggleContentHeight } updateAttributes={ this.props.updateAttributes }
-         setAttributes={ this.props.setAttributes } />
-     </div>
-   </div>
+     <ToggleTitle /*toggleTitle={ this.state.toggleTitle }*/ toggleTitle={ this.props.toggleTitle } toggleTitleHeight={ this.state.toggleTitleHeight } registerChangeHeight={ this.registerChangeHeight }
+       updateAttributes={ this.props.updateAttributes } setAttributes={ this.props.setAttributes } toggleTitleMediaUrl={ this.props.toggleTitleMediaUrl } toggleTitleMediaAlt={ this.props.toggleTitleMediaAlt } />
+     <ToggleContent /*toggleTitle={ this.state.toggleTitle }*/ toggleContent={ this.props.toggleContent } toggleContentHeight={ this.state.toggleContentHeight } registerChangeHeight={ this.registerChangeHeight }
+       updateAttributes={ this.props.updateAttributes } setAttributes={ this.props.setAttributes } />
+   </li>
 			);
 	}
 }
-
-// <div className={ 'vl-accordion__content-toggle__content' }>
-//        <RichText label="Toggle content" help="Enter some text" value={ this.toggleContent } name="content" placeholder="Content body..." onChange={ this.handleInputChange } />
-//      </div>

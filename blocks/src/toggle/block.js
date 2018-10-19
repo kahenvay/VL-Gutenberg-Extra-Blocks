@@ -51,9 +51,9 @@ registerBlockType('vl-blocks/toggle', {
 			selector: '.vl-accordion__title h1'
 		},
 		toggleTitle: {
-			// type: 'array',
-			// source: 'children',
-			// selector: '.vl-accordion__content-toggle__title h2' 
+			type: 'array',
+			source: 'children',
+			selector: '.vl-accordion__content-toggle__title__text'
 		},
 		titleMediaId: {
 			type: 'string'
@@ -69,24 +69,12 @@ registerBlockType('vl-blocks/toggle', {
 		toggleContent: {
 			type: 'array',
 			source: 'children',
-			selector: '.vl-accordion__content-toggle__content p'
+			selector: '.vl-accordion__content-toggle__content__text'
 		},
 		theme: {
 			type: 'string',
 			default: 'vl-accordion-theme-classic'
 		},
-		// toggleTitle: {
-		// 	type: 'string'
-		// },
-		// toggleTitleChild: {
-		// 	type: 'string'
-		// },
-		// toggleContentChild: {
-		// 	type: 'string'
-		// },
-		// toggleContent: {
-		// 	type: 'string'
-		// },
 		toggleTitleHeight: {
 			type: 'string'
 		},
@@ -212,7 +200,6 @@ registerBlockType('vl-blocks/toggle', {
 		let updateAttributes = (attributeOjbect) => {
 			// console.log('attributeOjbect', attributeOjbect);
 			setAttributes(attributeOjbect);
-		// console.log(attributes);
 		}
 
 		let titleMedia = (src, alt) => {
@@ -249,18 +236,13 @@ registerBlockType('vl-blocks/toggle', {
                                                                                                                                                                                }) } /></h1>
        </div>
        <ul className={ 'vl-accordion__content' }>
-         <li className={ 'vl-accordion__content-toggle' }>
-           <Toggle toggleTitle={ toggleTitle } toggleContent={ toggleContent } toggleTitleHeight={ toggleTitleHeight } toggleContentHeight={ toggleContentHeight } toggleTitleMediaUrl={ toggleTitleMediaUrl }
-             toggleTitleMediaAlt={ toggleTitleMediaAlt } updateAttributes={ updateAttributes } setAttributes={ setAttributes } />
-         </li>
+         <Toggle toggleTitle={ toggleTitle } toggleContent={ toggleContent } toggleTitleHeight={ toggleTitleHeight } toggleContentHeight={ toggleContentHeight } toggleTitleMediaUrl={ toggleTitleMediaUrl }
+           toggleTitleMediaAlt={ toggleTitleMediaAlt } updateAttributes={ updateAttributes } setAttributes={ setAttributes } />
        </ul>
      </div>
    </div>
 			);
 	},
-
-	// <Toggle toggleTitle={ toggleTitle } toggleContent={ toggleContent } toggleTitleHeight={ toggleTitleHeight } toggleContentHeight={ toggleContentHeight } toggleTitleMediaUrl={ toggleTitleMediaUrl }toggleTitleMediaAlt={ toggleTitleMediaAlt } updateAttributes={ updateAttributes } />
-
 
 
 
@@ -311,12 +293,11 @@ registerBlockType('vl-blocks/toggle', {
            <i></i>
            <div className={ 'vl-accordion__content-toggle__title' }>
              { titleMedia(toggleTitleMediaUrl, toggleTitleMediaAlt) }
-             <h2>{ toggleTitle } </h2>
+             <h2 className={ "vl-accordion__content-toggle__title__text" }> { toggleTitle } </h2>
            </div>
            <div className={ 'vl-accordion__content-toggle__content' }>
-             <p>
-               { toggleContent }
-             </p>
+             <div className={ "vl-accordion__content-toggle__content__text" }>
+               { toggleContent } </div>
            </div>
          </li>
        </ul>

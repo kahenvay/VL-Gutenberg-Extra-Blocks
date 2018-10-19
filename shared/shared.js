@@ -36,12 +36,12 @@ $(() => {
 		$('.vl-accordion-theme-neptune input[type="checkbox"]').click(function(e) {
 			// e.preventDefault();
 
-			function accordionUpDown(ele, transformHeight, condition, eleHeight) {
+			function accordionUpDown(ele, transformHeight, condition, eleParent) {
 				// console.log('lol');
 				if (condition) {
 					ele.css('transform', 'translateY(' + transformHeight + 'px)');
-					if (eleHeight) {
-						ele.parent().css('height', eleHeight);
+					if (eleParent) {
+						// eleParent.css('height', eleHeight);
 						ele.css('margin-bottom', transformHeight);
 					}
 				} else {
@@ -58,25 +58,22 @@ $(() => {
 
 			// Get title wrapper, title, content wrapper, content elements
 			const toggleTitle = el.parent().find('.vl-accordion__content-toggle__title');
-			const toggleTitleChild = el.parent().find('.vl-accordion__content-toggle__title').children('p,ul,h1,h2,h3,h4,h5,h6');
-			const toggleContentChild = el.parent().find('.vl-accordion__content-toggle__content').children('p,ul,h1,h2,h3,h4,h5,h6');
+			const toggleTitleChild = el.parent().find('.vl-accordion__content-toggle__title__text');
+			const toggleContentChild = el.parent().find('.vl-accordion__content-toggle__content__text');
 			const toggleContent = el.parent().find('.vl-accordion__content-toggle__content');
 
-			// console.log('toggleTitle', toggleTitle);
-			// console.log('toggleContent', toggleContent);
+			console.log('toggleTitle', toggleTitle);
+			console.log('toggleContent', toggleContent);
 
-			// get wrapper heights
+			// get wrapper heights even when hidden
 			const accordionTitleHeigth = parseInt(toggleTitle.css('height'));
-			toggleTitle.css('height', accordionTitleHeigth);
-
 			const accordionContentHeigth = parseInt(toggleContentChild.css('height'));
-			toggleContent.css('height', accordionContentHeigth);
 
 			accordionUpDown(toggleTitleChild, accordionTitleHeigth, checked);
-			accordionUpDown(toggleContentChild, accordionTitleHeigth, checked, accordionTitleHeigth * 2 + accordionContentHeigth);
+			accordionUpDown(toggleContentChild, accordionTitleHeigth, checked, toggleContent);
 
-			// console.log('accordionTitleHeigth', accordionTitleHeigth);
-			// console.log('accordionContentHeigth', accordionContentHeigth);
+			console.log('accordionTitleHeigth', accordionTitleHeigth);
+			console.log('accordionContentHeigth', accordionContentHeigth);
 
 		})
 	});
