@@ -39,21 +39,25 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
+= 0.3 =
+
+*	Todos : GENERAL
+						- Add to Settings page
+						- Twitter user tokens
+						- Improve twitter and instragram blocks to use token apis
+						- Add more customisation to blocks
+					INSTA
+						- Better base styling
+						- Replace with proper instagram icon
+						- Improve Instagram base css
+						- Improve Instagram user tokens flow?
+							- Make the access callback uri more friendly at least :p internal feedback says it's "scary"
+					TOGGLE
+						- Maybe improve base styling of neptune theme
+						- Video option for accordion
+						- Allow multiple toggles per accordion
+
 = 0.2 =
 
-* Can add images to accordions
-
-*	Todos : - Add to Settings page
-						- Twitter user tokens
-					- Improve Instagram user tokens flow?
-						- Make the access callback uri more friendly at least :p internal feedback says it's "scary"
-					- Improve twitter and instragram blocks to use token apis
-					- Add more customisation to blocks
-					- Replace with proper instagram icon
-					- Video option for accordion
-					- Allow multiple toggles per accordion
-					- Refactor jQuery to pure react => 
-						on edit : didmount+didupdate and save heights as attribute
-						on save : user attribute heights
-
-= 0.1 =
+	* Can add images to accordions
+	* Barebones of plugins done

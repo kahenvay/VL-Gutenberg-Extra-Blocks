@@ -1,6 +1,6 @@
 <?php 
 
-function tdy_se_twitter_callback( $attributes, $content ) {
+function vl_blocks_twitter_callback( $attributes, $content ) {
 
 	return "do page  callback";
 } 

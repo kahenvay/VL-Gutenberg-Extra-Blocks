@@ -52,7 +52,7 @@ export class InstaEmbed extends Component {
 	render() {
 		if (this.state.embed) {
 			return (
-				<div className="InstaEmbed" dangerouslySetInnerHTML={ { __html: this.state.embed } }>
+				<div className="vl-instagram__embed" dangerouslySetInnerHTML={ { __html: this.state.embed } }>
     </div>
 			)
 		} else {

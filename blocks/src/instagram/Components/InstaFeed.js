@@ -53,16 +53,12 @@ export class InstaFeed extends Component {
 	render() {
 		if (this.state.feed) {
 			return (
-				<div className="InstaFeed">
+				<div className="vl-instagram__feed">
       { this.state.feed.map((post) => {
         	return (
-        		<div>
-            <div>
-              <img src={ post.images.standard_resolution.url } />
-            </div>
-            <div>
-              <InstaEmbed link={ post.link } />
-            </div>
+        		<div className="vl-instagram__feed__post">
+            <img src={ post.images.standard_resolution.url } />
+            <InstaEmbed link={ post.link } />
           </div>
         		);
         }) }

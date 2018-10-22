@@ -104,17 +104,16 @@ registerBlockType('vl-blocks/instagram', {
 
 			// console.log('insta_token', insta_token);
 
+			/*<div className={ 'vl-instagram__header' }>
+          <div className={ 'vl-instagram__logo__wrapper' }>
+            <span class="dashicons dashicons-share"></span>
+          </div>
+        </div>*/
+
 			return (
 				<div className={ [props.className] }>
       <div className={ ['vl-instagram'] }>
-        <div className={ 'vl-instagram__header' }>
-          <div className={ 'vl-instagram__logo__wrapper' }>
-            <span class="dashicons dashicons-instagram"></span>
-          </div>
-        </div>
-        <div className={ 'vl-instagram__feed' }>
-          <InstaFeed access_token={ access_token } />
-        </div>
+        <InstaFeed access_token={ access_token } />
       </div>
     </div>
 				);
@@ -150,35 +149,7 @@ registerBlockType('vl-blocks/instagram', {
 	save: function(props) {
 		const {attributes: {hashtag, insta_token}, setAttributes} = props;
 
-		let args = {
-			access_token
-		}
-
-
-
-		if (access_token) {
-			return (
-				<div className={ [props.className] }>
-      <div className={ ['vl-instagram'] }>
-        <div className={ 'vl-instagram__header' }>
-          <div className={ 'vl-instagram__logo__wrapper' }>
-            <span class="dashicons dashicons-instagram"></span>
-          </div>
-        </div>
-        <div className={ 'vl-instagram__feed' }>
-          <InstaFeed access_token={ access_token } />
-        </div>
-      </div>
-    </div>
-				);
-		} else {
-			return (
-				<div className={ [props.className] }>
-      <h2>Please enter your instagram access token <a href="/wp-admin/admin.php?page=vl_blocks">here</a> before we can get your feed.</h2>
-    </div>
-			)
-		}
-
+		return null;
 
 
 	},

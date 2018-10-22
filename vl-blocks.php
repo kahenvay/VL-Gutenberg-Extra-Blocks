@@ -160,7 +160,7 @@ function vl_blocks_my_register_instagram() {
     array('wp-blocks', 'wp-element')
   );
  
-  // // and enqueue frontend?
+  //moving to shared, remove later
   if (isset(get_option('vl_blocks_options')['vl_blocks_instagram_access_token'])) {
     //addings instagram settings
     wp_localize_script( 'vl-blocks-instagram-js', 'access_token', get_option('vl_blocks_options')['vl_blocks_instagram_access_token'] );
@@ -185,7 +185,7 @@ function vl_blocks_my_register_instagram() {
   
   // Enqueue the script in the editor
   register_block_type('vl-blocks/instagram', array(
-    // 'render_callback' => 'vl_blocks_instagram_callback',
+    'render_callback' => 'vl_blocks_instagram_callback',
     'editor_script' => 'vl-blocks-instagram-js',  
     'editor_style' => 'vl-blocks-instagram-edit-style',
     'style' => 'vl-blocks-instagram-style' 
