@@ -230,12 +230,7 @@ registerBlockType('vl-blocks/toggle', {
          { themeSelector(isSelected) }
          { titleMediaUpload(isSelected) }
        </div>
-       <div className={ 'vl-accordion__title' }>
-         <h1><RichText keepPlaceholderOnFocus="true" label="Accordion title" help="Enter some text" value={ accordionTitle } placeholder="Optional accordion title" onChange={ (content) => setAttributes({
-                                                                                                                                                                               	accordionTitle: content
-                                                                                                                                                                               }) } /></h1>
-       </div>
-       <ul className={ 'vl-accordion__content' }>
+       <ul className={ 'vl-accordion__content banana' }>
          <Toggle toggleTitle={ toggleTitle } toggleContent={ toggleContent } toggleTitleHeight={ toggleTitleHeight } toggleContentHeight={ toggleContentHeight } toggleTitleMediaUrl={ toggleTitleMediaUrl }
            toggleTitleMediaAlt={ toggleTitleMediaAlt } updateAttributes={ updateAttributes } setAttributes={ setAttributes } />
        </ul>
@@ -244,6 +239,11 @@ registerBlockType('vl-blocks/toggle', {
 			);
 	},
 
+	//<div className={ 'vl-accordion__title' }>
+	//         <h1><RichText keepPlaceholderOnFocus="true" label="Accordion title" help="Enter some text" value={ accordionTitle } placeholder="Optional accordion title" onChange={ (content) => setAttributes({
+	//                                                                                                                                                                               	accordionTitle: content
+	//                                                                                                                                                                               }) } /></h1>
+	//       </div>
 
 
 	/**
@@ -281,13 +281,7 @@ registerBlockType('vl-blocks/toggle', {
 			<div className={ [props.className] }>
      <div className={ 'vl-accordion' + ' ' +
                       theme }>
-       <div className={ theme }>
-         { theme }
-       </div>
-       <div className={ 'vl-accordion__title' }>
-         <h1>{ accordionTitle }</h1>
-       </div>
-       <ul className={ 'vl-accordion__content' }>
+       <ul className={ 'vl-accordion__content banana' }>
          <li className={ 'vl-accordion__content-toggle' }>
            <input type="checkbox" />
            <i></i>
@@ -304,8 +298,9 @@ registerBlockType('vl-blocks/toggle', {
      </div>
    </div>
 			);
-
-
-
 	},
 });
+
+// <div className={ 'vl-accordion__title' }>
+//          <h1>{ accordionTitle }</h1>
+//        </div>

@@ -68,9 +68,10 @@ $(() => {
 			// get wrapper heights even when hidden
 			const accordionTitleHeigth = parseInt(toggleTitle.css('height'));
 			const accordionContentHeigth = parseInt(toggleContentChild.css('height'));
+			const toggleTitleChildHeight = parseInt(toggleTitleChild.css('height'));
 
-			accordionUpDown(toggleTitleChild, accordionTitleHeigth, checked);
-			accordionUpDown(toggleContentChild, accordionTitleHeigth, checked, toggleContent);
+			accordionUpDown(toggleTitleChild, (accordionTitleHeigth / 2) + toggleTitleChildHeight / 2, checked);
+			accordionUpDown(toggleContentChild, toggleTitleChildHeight, checked, toggleContent);
 
 			console.log('accordionTitleHeigth', accordionTitleHeigth);
 			console.log('accordionContentHeigth', accordionContentHeigth);
